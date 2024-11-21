@@ -73,7 +73,7 @@ futureSDM <- function(mdl_paths, pred_ls) {
         futsd <- futsd * 100
         
         writeRaster(futsd,
-          filename = paste0("E:/Output/SDM_test/belgium/out/",
+          filename = paste0("/lustre1/scratch/348/vsc34871/output/futSDM_out/",
            species_name, "_tile_", j, ".tif"),
           overwrite = TRUE)
       } else {
@@ -84,7 +84,7 @@ futureSDM <- function(mdl_paths, pred_ls) {
           
           writeRaster(futsd,
             filename = paste0(
-              "E:/Output/SDM_test/belgium/out/",
+              "/lustre1/scratch/348/vsc34871/output/futSDM_out/",
               species_name, "_tile_", j, "_model", k, ".tif"),
             overwrite = TRUE)
         }

@@ -5,9 +5,9 @@
 
 source $VSC_HOME/.bashrc
 
-conda activate VoCC_R_new
-
 cd $VSC_DATA/sdm_targets/
 export OMP_NUM_THREADS=1
+
+module load R/4.2.2-foss-2022b
 
 Rscript targets_run_cmq.R
