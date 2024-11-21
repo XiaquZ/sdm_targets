@@ -25,21 +25,23 @@ tar_option_set(
 # Loads all R scripts in ./R/ directory.
 # Here, all packages are loaded from the ./R/packages.R file
 # The calc_forward_vel function is loaded from the ./R/calc_forward_vel.R file
-tar_source("R/packages.R")
+tar_source()
 
 tar_plan(
-input_folders <- list(
-  bio12 = "E:/Output/SDM_test/belgium/tiles/bio12/",
-  bio15 = "E:/Output/SDM_test/belgium/tiles/bio15/",
-  bio5 = "E:/Output/SDM_test/belgium/tiles/BIO5/",
-  bio6 = "E:/Output/SDM_test/belgium/tiles/BIO6/",
-  cec = "E:/Output/SDM_test/belgium/tiles/cec/",
-  clay = "E:/Output/SDM_test/belgium/tiles/clay/"
-),
-mdl_paths <- list.files("E:/SDMs/Stef_SDMs/Models/", full.names = T),
+  # Load the required paths.
+  input_folders <- list(
+    ForestClim_12 = "E:/Output/SDM_test/belgium/tiles/ForestClim_12/",
+    ForestClim_15 = "E:/Output/SDM_test/belgium/tiles/ForestClim_15/",
+    ForestClim_05 = "E:/Output/SDM_test/belgium/tiles/ForestClim_05/",
+    ForestClim_06 = "E:/Output/SDM_test/belgium/tiles/ForestClim_06/",
+    cec = "E:/Output/SDM_test/belgium/tiles/cec/",
+    clay = "E:/Output/SDM_test/belgium/tiles/clay/"
+  ),
+  mdl_paths <- list.files("E:/SDMs/Stef_SDMs/Models/", full.names = T),
 
-  tar_target(predictor_list, predictorls(input_folders)),
-  tar_target(futureSDM_predict,
-  futureSDM(mdl_paths, predls),
-  )
+  # Create predictor lists.
+  tar_target(pred_ls, predictorls(input_folders)),
+
+  # Make future species distributions.
+  tar_target(futureSDM_predict, futureSDM(mdl_paths, pred_ls))
 )
