@@ -1,3 +1,9 @@
+# Created by use_targets().
+# Follow the comments below to fill in this target script.
+# Then follow the manual to check and run the pipeline:
+#   https://books.ropensci.org/targets/walkthrough.html#inspect-the-pipeline
+
+# Load packages required to define the pipeline:
 library(targets)
 library(tarchetypes)
 library(clustermq)
@@ -9,7 +15,7 @@ options(
   clustermq.template = "./cmq.tmpl" # if using your own template
 )
 
-## Settings for clustermq template when running clustermq on HPC
+# Set target options:
 tar_option_set(
   resources = tar_resources(
     clustermq = tar_resources_clustermq(template = list(
@@ -22,11 +28,11 @@ tar_option_set(
   )
 )
 
-# Loads all R scripts in ./R/ directory.
-# Here, all packages are loaded from the ./R/packages.R file
-# The calc_forward_vel function is loaded from the ./R/calc_forward_vel.R file
+# Run the R scripts in the R/ folder with your custom functions:
 tar_source()
+# tar_source("other_functions.R") # Source other scripts as needed.
 
+# Replace the target list below with your own:
 tar_plan(
   # Load the required paths.
   input_folders <- list(
