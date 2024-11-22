@@ -1,7 +1,8 @@
 #! /bin/bash
 #SBATCH --job-name=pred_futSDMs
-#SBATCH --ntasks=1 --cpus-per-task=10 --mem-per-cpu=7000mb
+#SBATCH --ntasks=1 --cpus-per-task=10 --mem-per-cpu=6000mb
 #SBATCH --time=16:35:00
+#SBATCH -A lp_climateplants
 
 source $VSC_HOME/.bashrc
 
