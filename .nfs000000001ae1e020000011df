@@ -1,0 +1,72 @@
+
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> clustermq:::worker("tcp://r27i27n04:7570")
+2024-11-25 16:45:57.399152 | Master: tcp://r27i27n04:7570
+2024-11-25 16:45:57.401909 | connecting to: tcp://r27i27n04:7570
+2024-11-25 16:45:57.480515 | > call 1 (0.052s wait)
+2024-11-25 16:45:58.803317 | > call 2 (0.131s wait)
+2024-11-25 16:45:58.971425 | > call 3 (0.123s wait)
+2024-11-25 16:45:59.183928 | > call 4 (0.157s wait)
+2024-11-25 16:45:59.476651 | > call 5 (0.247s wait)
+2024-11-25 16:45:59.742569 | > call 6 (0.222s wait)
+2024-11-25 16:46:00.030076 | > call 7 (0.243s wait)
+2024-11-25 16:46:00.344635 | > call 8 (0.267s wait)
+2024-11-25 16:46:00.663836 | > call 9 (0.274s wait)
+2024-11-25 16:46:00.885309 | > call 10 (0.177s wait)
+2024-11-25 16:46:01.116394 | > call 11 (0.186s wait)
+2024-11-25 16:46:01.361312 | > call 12 (0.200s wait)
+2024-11-25 16:46:01.728589 | > call 13 (0.322s wait)
+2024-11-25 16:46:02.030390 | > call 14 (0.257s wait)
+2024-11-25 16:46:02.299343 | > call 15 (0.225s wait)
+2024-11-25 16:46:02.595616 | > call 16 (0.250s wait)
+2024-11-25 16:46:02.907089 | > call 17 (0.267s wait)
+2024-11-25 16:46:03.186798 | > call 18 (0.235s wait)
+2024-11-25 16:46:03.597955 | > call 19 (0.367s wait)
+2024-11-25 16:46:03.858148 | > call 20 (0.215s wait)
+2024-11-25 16:46:04.240415 | > call 21 (0.338s wait)
+2024-11-25 16:46:04.531001 | > call 22 (0.246s wait)
+2024-11-25 16:46:04.738572 | > call 23 (0.162s wait)
+2024-11-25 16:46:05.017994 | > call 24 (0.235s wait)
+2024-11-25 16:46:05.374424 | > call 25 (0.311s wait)
+2024-11-25 16:46:05.687938 | > call 26 (0.269s wait)
+2024-11-25 16:46:05.958065 | > call 27 (0.226s wait)
+2024-11-25 16:46:06.227660 | > call 28 (0.224s wait)
+2024-11-25 16:46:06.430624 | > call 29 (0.157s wait)
+2024-11-25 16:46:06.716460 | > call 30 (0.241s wait)
+2024-11-25 16:46:07.098012 | > call 31 (0.337s wait)
+2024-11-25 16:46:07.452173 | > call 32 (0.309s wait)
+2024-11-25 16:46:07.696038 | > call 33 (0.199s wait)
+2024-11-25 16:46:08.035645 | > call 34 (0.295s wait)
+2024-11-25 16:46:08.465140 | > call 35 (0.385s wait)
+2024-11-25 16:46:08.778203 | > call 36 (0.268s wait)
+2024-11-25 16:46:09.048565 | > call 37 (0.225s wait)
+2024-11-25 16:46:09.346208 | > call 38 (0.253s wait)
+2024-11-25 16:46:09.539602 | > call 39 (0.147s wait)
+2024-11-25 16:46:09.873243 | > call 40 (0.290s wait)
+2024-11-25 16:46:10.146533 | > call 41 (0.227s wait)
+2024-11-25 16:46:10.403067 | > call 42 (0.211s wait)
+2024-11-25 16:46:10.611637 | > call 43 (0.164s wait)
+2024-11-25 16:46:13.332482 | > call 44 (2.677s wait)
+2024-11-25 16:46:13.333117 | shutting down worker
+2024-11-25 16:46:13.333248 | 
+Total: 44 in 2.71s [user], 0.11s [system], 16.96s [elapsed]
+There were 43 warnings (use warnings() to see them)
+> 
+> 

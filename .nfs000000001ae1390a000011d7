@@ -1,0 +1,43 @@
+SLURM_JOB_ID: 57365464
+SLURM_JOB_USER: vsc34871
+SLURM_JOB_ACCOUNT: lp_climateplants
+SLURM_JOB_NAME: auto-sdms
+SLURM_CLUSTER_NAME: genius
+SLURM_JOB_PARTITION: batch
+SLURM_ARRAY_JOB_ID: 57365461
+SLURM_ARRAY_TASK_ID: 3
+SLURM_NNODES: 1
+SLURM_NODELIST: r25i13n16
+SLURM_JOB_CPUS_PER_NODE: 36
+Date: Mon Nov 25 16:03:13 CET 2024
+Walltime: 00-15:00:00
+========================================================================
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "R/4.2.2-foss-2022b"
+   Try: "module spider R/4.2.2-foss-2022b" to see how to load the module(s).
+
+
+
+
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-redhat-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> clustermq:::worker("tcp://r26i13n03:9685")
+Error in loadNamespace(x) : there is no package called ‘clustermq’
+Calls: loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+Execution halted
