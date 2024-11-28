@@ -34,20 +34,23 @@ tar_source()
 
 # Replace the target list below with your own:
 tar_plan(
-  # Load the required paths.
-  input_folders <- list(
-    ForestClim_12 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_12/",
-    ForestClim_15 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_15/",
-    ForestClim_05 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_05/",
-    ForestClim_06 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_06/",
-    cec = "/lustre1/scratch/348/vsc34871/output/tiles/cec/",
-    clay = "/lustre1/scratch/348/vsc34871/output/tiles/clay/"
+  # Load the required paths
+  input_folders = list(
+    ForestClim_12 = "E:/Output/SDM_test/belgium/tiles/ForestClim_12/",
+    ForestClim_15 = "E:/Output/SDM_test/belgium/tiles/ForestClim_15/",
+    ForestClim_05 = "E:/Output/SDM_test/belgium/tiles/ForestClim_05/",
+    ForestClim_06 = "E:/Output/SDM_test/belgium/tiles/ForestClim_06/",
+    cec = "E:/Output/SDM_test/belgium/tiles/cec/",
+    clay = "E:/Output/SDM_test/belgium/tiles/clay/"
   ),
-  mdl_paths <- list.files("/lustre1/scratch/348/vsc34871/input/Models/", full.names = T),
+  mdl_paths = list.files(
+    "E:/SDMs/Stef_SDMs/Models/",
+    full.names = TRUE
+  ),
 
-  # Create predictor lists.
+  # Create predictor lists
   tar_target(pred_ls, predictorls(input_folders)),
 
-  # Make future species distributions.
+  # Make future species distributions
   tar_target(futureSDM_predict, futureSDM(mdl_paths, pred_ls))
 )

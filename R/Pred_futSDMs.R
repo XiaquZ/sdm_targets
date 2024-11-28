@@ -23,6 +23,7 @@ predictorls <- function(input_folders) {
         # Read the raster and assign a name
         raster <- rast(file_path)
         names(raster) <- predictor
+        raster <- terra::wrap(raster)
         tile_preds[[predictor]] <- raster
       } else {
         warning(paste("File not found:", file_path))
@@ -31,9 +32,10 @@ predictorls <- function(input_folders) {
     
     # Combine rasters for this tile
     if (length(tile_preds) > 0) {
-      predls[[i]] <- rast(tile_preds)
+      predls[[i]] <- tile_preds
     } else {
       warning(paste("No predictors found for tile", i))
+      next
     }
   }
   
@@ -51,10 +53,11 @@ futureSDM <- function(mdl_paths, pred_ls) {
     # Load model object
     mdl <- load(mdl_paths[[p]])
     mdl <- e.mx_rp.f
-
+    print(mdl)
     # Select the best SDM based on delta AIC
     res <- eval.results(mdl)
     min_index <- which(res$delta.AICc == min(res$delta.AICc))
+    print(min_index)
 
     if (length(min_index) == 1) {
       mdl_select <- mdl@models[[min_index]]
@@ -67,24 +70,25 @@ futureSDM <- function(mdl_paths, pred_ls) {
     for (j in seq_along(pred_ls)) {
       print(paste0("Start predicting the future SDM for: ",
        species_name, "_tile_", j))
-      
+       preds <- lapply(pred_ls[[j]], rast) # Unwrap the list of raster
+       stack_preds <- rast(preds) #Create the raster stack of predictors.
       if (length(min_index) == 1) {
-        futsd <- predictMaxNet(mdl_select, pred_ls[[j]], type = "logistic")
+        futsd <- predictMaxNet(mdl_select, stack_preds, type = "logistic")
         futsd <- futsd * 100
         
         writeRaster(futsd,
-          filename = paste0("/lustre1/scratch/348/vsc34871/output/futSDM_out/",
+          filename = paste0("E:/Output/SDM_test/belgium/out/",
            species_name, "_tile_", j, ".tif"),
           overwrite = TRUE)
       } else {
         for (k in seq_along(min_index)) {
           mdl_select <- mdl@models[[min_index[[k]]]]
-          futsd <- predictMaxNet(mdl_select, pred_ls[[j]], type = "logistic")
+          futsd <- predictMaxNet(mdl_select, stack_preds, type = "logistic")
           futsd <- futsd * 100
           
           writeRaster(futsd,
             filename = paste0(
-              "/lustre1/scratch/348/vsc34871/output/futSDM_out/",
+              "E:/Output/SDM_test/belgium/out/",
               species_name, "_tile_", j, "_model", k, ".tif"),
             overwrite = TRUE)
         }
