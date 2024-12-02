@@ -47,10 +47,6 @@ tar_plan(
     "E:/SDMs/Stef_SDMs/Models/",
     full.names = TRUE
   ),
-
-  # Create predictor lists
-  tar_target(pred_ls, predictorls(input_folders)),
-
   # Make future species distributions
-  tar_target(futureSDM_predict, futureSDM(mdl_paths, pred_ls))
+  tar_target(predict_futSDM, predict_futSDM(input_folders, mdl_paths))
 )

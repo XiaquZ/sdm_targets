@@ -1,96 +1,82 @@
-predictorls <- function(input_folders) {
-  # Create a list to store predictors for each tile separately
-  predls <- list()
-  
+predict_futSDM <- function(input_folders, mdl_paths) {
+
   # Iterate through tiles (assumes tiles are numbered from 1 to 9)
   for (i in 1:9) {
     # Initialize an empty list to store predictors for this tile
-    tile_preds <- list()
     # Define predictor keywords
-    predictors <- c("ForestClim_05", "ForestClim_06",
-     "ForestClim_12", "ForestClim_15", "cec", "clay")
-    
+    predictors <- c(
+      "ForestClim_05", "ForestClim_06",
+      "ForestClim_12", "ForestClim_15", "cec", "clay"
+    )
+
+    # Get file paths of all predictors
+    files <- c()
     # Iterate through predictors and read corresponding rasters
     for (predictor in predictors) {
       # Find the folder for the predictor
       folder <- grep(predictor, input_folders, value = TRUE)
+
+     # Construct the file path
+      files <- c(files, paste0(folder, predictor, "_", i, ".tif"))
+    }
+    stack_preds <- vrt(files, options="-separate")
+    names(stack_preds) <- c(
+      "ForestClim_05", "ForestClim_06",
+      "ForestClim_12", "ForestClim_15", "cec", "clay"
+    )
+    print(stack_preds)
+
+    for (p in seq_along(mdl_paths)) {
+      # Load one of the SDMs
+      species_name <- gsub(".RData", "", basename(mdl_paths[[p]]))
+      print(paste0("Start selecting lowest AIC model for: ", species_name))
+
+      # Load model object
+      mdl <- load(mdl_paths[[p]])
+      mdl <- e.mx_rp.f
       
-      # Construct the file path
-      file_path <- file.path(folder, paste0(predictor, "_", i, ".tif"))
+      # Select the best SDM based on delta AIC
+      res <- eval.results(mdl)
+      min_index <- which(res$delta.AICc == min(res$delta.AICc))
       
-      # Check if the file exists
-      if (file.exists(file_path)) {
-        # Read the raster and assign a name
-        raster <- rast(file_path)
-        names(raster) <- predictor
-        raster <- terra::wrap(raster)
-        tile_preds[[predictor]] <- raster
+
+      if (length(min_index) == 1) {
+        mdl_select <- mdl@models[[min_index]]
       } else {
-        warning(paste("File not found:", file_path))
+        warning(paste0(species_name, " has more than one selected model"))
+        mdl_select <- mdl@models[[min_index]]
       }
-    }
-    
-    # Combine rasters for this tile
-    if (length(tile_preds) > 0) {
-      predls[[i]] <- tile_preds
-    } else {
-      warning(paste("No predictors found for tile", i))
-      next
-    }
-  }
-  
-  # Return the list of predictors for all tiles
-  return(predls)
-}
 
+      # Predict the future distribution for each raster tile
+      print(paste0(
+        "Start predicting the future SDM for: ",
+        species_name, "_tile_", i
+      ))
 
-futureSDM <- function(mdl_paths, pred_ls) {
-  for (p in seq_along(mdl_paths)) {
-    # Load one of the SDMs
-    species_name <- gsub(".RData", "", basename(mdl_paths[[p]]))
-    print(paste0("Start selecting lowest AIC model for: ", species_name))
-
-    # Load model object
-    mdl <- load(mdl_paths[[p]])
-    mdl <- e.mx_rp.f
-    print(mdl)
-    # Select the best SDM based on delta AIC
-    res <- eval.results(mdl)
-    min_index <- which(res$delta.AICc == min(res$delta.AICc))
-    print(min_index)
-
-    if (length(min_index) == 1) {
-      mdl_select <- mdl@models[[min_index]]
-    } else {
-      warning(paste0(species_name, " has more than one selected model"))
-      mdl_select <- mdl@models[[min_index]]
-    }
-
-    # Predict the future distribution for each raster tile
-    for (j in seq_along(pred_ls)) {
-      print(paste0("Start predicting the future SDM for: ",
-       species_name, "_tile_", j))
-       preds <- lapply(pred_ls[[j]], rast) # Unwrap the list of raster
-       stack_preds <- rast(preds) #Create the raster stack of predictors.
       if (length(min_index) == 1) {
         futsd <- predictMaxNet(mdl_select, stack_preds, type = "logistic")
         futsd <- futsd * 100
-        
+
         writeRaster(futsd,
-          filename = paste0("E:/Output/SDM_test/belgium/out/",
-           species_name, "_tile_", j, ".tif"),
-          overwrite = TRUE)
+          filename = paste0(
+            "E:/Output/SDM_test/belgium/out/",
+            species_name, "_tile_", i, ".tif"
+          ),
+          overwrite = TRUE
+        )
       } else {
         for (k in seq_along(min_index)) {
           mdl_select <- mdl@models[[min_index[[k]]]]
           futsd <- predictMaxNet(mdl_select, stack_preds, type = "logistic")
           futsd <- futsd * 100
-          
+
           writeRaster(futsd,
             filename = paste0(
               "E:/Output/SDM_test/belgium/out/",
-              species_name, "_tile_", j, "_model", k, ".tif"),
-            overwrite = TRUE)
+              species_name, "_tile_", i, "_model", k, ".tif"
+            ),
+            overwrite = TRUE
+          )
         }
       }
     }
