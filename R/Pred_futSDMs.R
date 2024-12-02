@@ -1,7 +1,7 @@
 predict_futSDM <- function(input_folders, mdl_paths) {
 
   # Iterate through tiles (assumes tiles are numbered from 1 to 9)
-  for (i in 1:99) {
+  for (i in 1:9) {
     # Initialize an empty list to store predictors for this tile
     # Define predictor keywords
     predictors <- c(
@@ -26,13 +26,12 @@ predict_futSDM <- function(input_folders, mdl_paths) {
     )
     print(stack_preds)
 
-    for (p in seq_along(mdl_paths)) {
       # Load one of the SDMs
-      species_name <- gsub(".RData", "", basename(mdl_paths[[p]]))
+      species_name <- gsub(".RData", "", basename(mdl_paths))
       print(paste0("Start selecting lowest AIC model for: ", species_name))
 
       # Load model object
-      mdl <- load(mdl_paths[[p]])
+      mdl <- load(mdl_paths)
       mdl <- e.mx_rp.f
       
       # Select the best SDM based on delta AIC
@@ -59,7 +58,7 @@ predict_futSDM <- function(input_folders, mdl_paths) {
 
         writeRaster(futsd,
           filename = paste0(
-            "/lustre1/scratch/348/vsc34871/output/futSDM_out/",
+            "E:/Output/SDM_test/belgium/out_tile/",
             species_name, "_tile_", i, ".tif"
           ),
           overwrite = TRUE
@@ -72,13 +71,13 @@ predict_futSDM <- function(input_folders, mdl_paths) {
 
           writeRaster(futsd,
             filename = paste0(
-              "/lustre1/scratch/348/vsc34871/output/futSDM_out/",
+              "E:/Output/SDM_test/belgium/out_tile/",
               species_name, "_tile_", i, "_model", k, ".tif"
             ),
             overwrite = TRUE
           )
         }
       }
-    }
+    
   }
 }
