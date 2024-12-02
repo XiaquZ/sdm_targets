@@ -1,0 +1,57 @@
+SLURM_JOB_ID: 57443729
+SLURM_JOB_USER: vsc34871
+SLURM_JOB_ACCOUNT: lp_climateplants
+SLURM_JOB_NAME: auto-sdms
+SLURM_CLUSTER_NAME: genius
+SLURM_JOB_PARTITION: bigmem
+SLURM_ARRAY_JOB_ID: 57443727
+SLURM_ARRAY_TASK_ID: 2
+SLURM_NNODES: 1
+SLURM_NODELIST: r23i27n18
+SLURM_JOB_CPUS_PER_NODE: 36
+Date: Mon Dec  2 16:20:23 CET 2024
+Walltime: 00-20:00:00
+========================================================================
+
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> clustermq:::worker("tcp://r26i13n05:9322")
+2024-12-02 16:20:26.274950 | Master: tcp://r26i13n05:9322
+2024-12-02 16:20:26.276313 | connecting to: tcp://r26i13n05:9322
+2024-12-02 16:20:26.311230 | > call 1 (0.006s wait)
+2024-12-02 16:20:33.740726 | > call 2 (0.246s wait)
+class       : SpatRaster 
+dimensions  : 16000, 16000, 6  (nrow, ncol, nlyr)
+resolution  : 25, 25  (x, y)
+extent      : 2636075, 3036075, 1385925, 1785925  (xmin, xmax, ymin, ymax)
+coord. ref. : +proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs 
+source      : spat_c6fe424b5b6fc_815076_o8up7yuDdJ6XHBX.vrt 
+names       : Fores~im_05, Fores~im_06, Fores~im_12, Fores~im_15,    cec,   clay 
+min values  :        18.8,         3.7,       364.6,        57.7, 109.23, 126.31 
+max values  :        48.7,        17.8,      1487.1,        82.7, 369.42, 521.43 
+[1] "Start selecting lowest AIC model for: Actaea spicata"
+[1] "Start predicting the future SDM for: Actaea spicata_tile_1"
+2024-12-02 16:23:15.796180 | > call 3 (0.042s wait)
+2024-12-02 16:23:15.797558 | shutting down worker
+2024-12-02 16:23:15.797755 | 
+Total: 3 in 112.08s [user], 55.13s [system], 170.03s [elapsed]
+Warning message:
+package ‘enmSdmX’ was built under R version 4.4.2 
+> 
+> 

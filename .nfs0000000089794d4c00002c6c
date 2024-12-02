@@ -1,0 +1,83 @@
+SLURM_JOB_ID: 57443619
+SLURM_JOB_USER: vsc34871
+SLURM_JOB_ACCOUNT: lp_climateplants
+SLURM_JOB_NAME: auto-sdms
+SLURM_CLUSTER_NAME: genius
+SLURM_JOB_PARTITION: batch
+SLURM_ARRAY_JOB_ID: 57443617
+SLURM_ARRAY_TASK_ID: 2
+SLURM_NNODES: 2
+SLURM_NODELIST: r25i27n[12,14]
+SLURM_JOB_CPUS_PER_NODE: 36(x2)
+Date: Mon Dec  2 16:08:51 CET 2024
+Walltime: 00-20:00:00
+========================================================================
+
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> clustermq:::worker("tcp://r26i13n05:8706")
+2024-12-02 16:08:58.462757 | Master: tcp://r26i13n05:8706
+2024-12-02 16:08:58.465642 | connecting to: tcp://r26i13n05:8706
+2024-12-02 16:08:58.553733 | > call 1 (0.062s wait)
+2024-12-02 16:09:01.220284 | > call 2 (0.103s wait)
+2024-12-02 16:09:01.328035 | > call 3 (0.063s wait)
+2024-12-02 16:09:01.444818 | > call 4 (0.060s wait)
+2024-12-02 16:09:01.567853 | > call 5 (0.079s wait)
+2024-12-02 16:09:01.708255 | > call 6 (0.096s wait)
+2024-12-02 16:09:01.984352 | > call 7 (0.231s wait)
+2024-12-02 16:09:02.110652 | > call 8 (0.081s wait)
+2024-12-02 16:09:02.239655 | > call 9 (0.084s wait)
+2024-12-02 16:09:02.452610 | > call 10 (0.169s wait)
+2024-12-02 16:09:02.625353 | > call 11 (0.128s wait)
+2024-12-02 16:09:02.857147 | > call 12 (0.187s wait)
+2024-12-02 16:09:03.108203 | > call 13 (0.206s wait)
+2024-12-02 16:09:03.405613 | > call 14 (0.253s wait)
+2024-12-02 16:09:03.560299 | > call 15 (0.109s wait)
+2024-12-02 16:09:03.743134 | > call 16 (0.138s wait)
+2024-12-02 16:09:03.932291 | > call 17 (0.143s wait)
+2024-12-02 16:09:04.187413 | > call 18 (0.210s wait)
+2024-12-02 16:09:04.378330 | > call 19 (0.145s wait)
+2024-12-02 16:09:04.603147 | > call 20 (0.179s wait)
+2024-12-02 16:09:04.788537 | > call 21 (0.141s wait)
+2024-12-02 16:09:05.081174 | > call 22 (0.248s wait)
+2024-12-02 16:09:05.316790 | > call 23 (0.191s wait)
+2024-12-02 16:09:05.522436 | > call 24 (0.160s wait)
+2024-12-02 16:09:05.656290 | > call 25 (0.088s wait)
+2024-12-02 16:09:05.950193 | > call 26 (0.249s wait)
+2024-12-02 16:09:06.146748 | > call 27 (0.151s wait)
+2024-12-02 16:09:06.329077 | > call 28 (0.136s wait)
+2024-12-02 16:09:06.490370 | > call 29 (0.116s wait)
+2024-12-02 16:09:06.727248 | > call 30 (0.192s wait)
+2024-12-02 16:09:06.907176 | > call 31 (0.134s wait)
+2024-12-02 16:09:07.187278 | > call 32 (0.235s wait)
+2024-12-02 16:09:07.355874 | > call 33 (0.123s wait)
+2024-12-02 16:09:07.643064 | > call 34 (0.242s wait)
+2024-12-02 16:09:07.878940 | > call 35 (0.191s wait)
+2024-12-02 16:09:08.056995 | > call 36 (0.133s wait)
+2024-12-02 16:09:08.231366 | > call 37 (0.129s wait)
+2024-12-02 16:09:08.491374 | > call 38 (0.215s wait)
+2024-12-02 16:09:08.692223 | > call 39 (0.155s wait)
+2024-12-02 16:09:08.963712 | > call 40 (0.227s wait)
+2024-12-02 16:09:09.378798 | > call 41 (0.371s wait)
+2024-12-02 16:09:09.379322 | shutting down worker
+2024-12-02 16:09:09.379451 | 
+Total: 41 in 2.56s [user], 0.14s [system], 11.81s [elapsed]
+There were 40 warnings (use warnings() to see them)
+> 
+> 
