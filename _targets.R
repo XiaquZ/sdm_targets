@@ -36,16 +36,16 @@ tar_source()
 tar_plan(
   # Load the required paths
     input_folders = list(
-    ForestClim_12 = "E:/Output/SDM_test/belgium/tiles/ForestClim_12/",
-    ForestClim_15 = "E:/Output/SDM_test/belgium/tiles/ForestClim_15/",
-    ForestClim_05 = "E:/Output/SDM_test/belgium/tiles/ForestClim_05/",
-    ForestClim_06 = "E:/Output/SDM_test/belgium/tiles/ForestClim_06/",
-    cec = "E:/Output/SDM_test/belgium/tiles/cec/",
-    clay = "E:/Output/SDM_test/belgium/tiles/clay/"
+    ForestClim_12 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_12/",
+    ForestClim_15 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_15/",
+    ForestClim_05 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_05/",
+    ForestClim_06 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_06/",
+    cec = "/lustre1/scratch/348/vsc34871/output/tiles/cec/",
+    clay = "/lustre1/scratch/348/vsc34871/output/tiles/clay/"
   ),
   tar_target(mdl_paths,
     list.files(
-    "E:/SDMs/Stef_SDMs/Models/",
+    "/lustre1/scratch/348/vsc34871/input/Models/",
     full.names = TRUE
   )),
   # Make future species distributions

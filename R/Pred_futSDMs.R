@@ -1,7 +1,7 @@
 predict_futSDM <- function(input_folders, mdl_paths) {
 
   # Iterate through tiles (assumes tiles are numbered from 1 to 9)
-  for (i in 1:9) {
+  for (i in 1:99) {
     # Initialize an empty list to store predictors for this tile
     # Define predictor keywords
     predictors <- c(
@@ -58,7 +58,7 @@ predict_futSDM <- function(input_folders, mdl_paths) {
 
         writeRaster(futsd,
           filename = paste0(
-            "E:/Output/SDM_test/belgium/out_tile/",
+            "/lustre1/scratch/348/vsc34871/output/futSDM_out/",
             species_name, "_tile_", i, ".tif"
           ),
           overwrite = TRUE
@@ -71,7 +71,7 @@ predict_futSDM <- function(input_folders, mdl_paths) {
 
           writeRaster(futsd,
             filename = paste0(
-              "E:/Output/SDM_test/belgium/out_tile/",
+              "/lustre1/scratch/348/vsc34871/output/futSDM_out/",
               species_name, "_tile_", i, "_model", k, ".tif"
             ),
             overwrite = TRUE
