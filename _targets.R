@@ -2,7 +2,6 @@
 # Follow the comments below to fill in this target script.
 # Then follow the manual to check and run the pipeline:
 #   https://books.ropensci.org/targets/walkthrough.html#inspect-the-pipeline
-
 # Load packages required to define the pipeline:
 library(targets)
 library(tarchetypes)
@@ -19,7 +18,7 @@ options(
 tar_option_set(
   resources = tar_resources(
     clustermq = tar_resources_clustermq(template = list(
-      job_name = "auto-sdms",
+      job_name = "future-sdms",
       per_cpu_mem = "8000mb",
       n_tasks = 1,
       per_task_cpus = 36,
@@ -36,16 +35,22 @@ tar_source()
 tar_plan(
   # Load the required paths
     input_folders = list(
-    ForestClim_12 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_12/",
-    ForestClim_15 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_15/",
-    ForestClim_05 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_05/",
-    ForestClim_06 = "/lustre1/scratch/348/vsc34871/output/tiles/ForestClim_06/",
-    cec = "/lustre1/scratch/348/vsc34871/output/tiles/cec/",
-    clay = "/lustre1/scratch/348/vsc34871/output/tiles/clay/"
+    cec = "/lustre1/scratch/348/vsc34871/SDM_current/pred_tiles/cec/",
+    CHELSA_bio12_EU_2000.2019 = "",
+    CHELSA_bio15_EU_2000.2019 = "",
+    clay = "/lustre1/scratch/348/vsc34871/SDM_current/pred_tiles/clay/",
+    Elevation = "/lustre1/scratch/348/vsc34871/SDM_current/pred_tiles/Elevation/",
+    Micro_BIO5_EU_CHELSAbased_2000.2020 = "",
+    Micro_BIO6_EU_CHELSAbased_2000.2020 = "",
+    Slope = "/lustre1/scratch/348/vsc34871/SDM_current/pred_tiles/Slope/",
+    TWI = "/lustre1/scratch/348/vsc34871/SDM_current/pred_tiles/TWI/",
+    phh2o_0_30_WeightedMean = "/lustre1/scratch/348/vsc34871/SDM_current/pred_tiles/phh2o_0_30_WeightedMean/"
   ),
+  # Note that although the input folders named bio5, bio6, bio12, and bio15 are represented 2000-2000,
+  # they actually contain future climate data for 2071-2100 under the SSP3-7.0 scenario.
   tar_target(mdl_paths,
     list.files(
-    "/lustre1/scratch/348/vsc34871/input/Models/",
+    "/lustre1/scratch/348/vsc34871/SDM_fut/Models/",
     full.names = TRUE
   )),
   # Make future species distributions
