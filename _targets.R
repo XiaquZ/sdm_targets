@@ -46,11 +46,11 @@ tar_plan(
     TWI = "/lustre1/scratch/348/vsc34871/SDM_current/pred_bigtiles/TWI/",
     phh2o_0_30_WeightedMean = "/lustre1/scratch/348/vsc34871/SDM_current/pred_bigtiles/phh2o_0_30_WeightedMean/"
   ),
-  # Note that although the input folders named bio5, bio6, bio12, and bio15 are represented 2000-2000,
+  # Note that although the input folders named bio5, bio6, bio12, and bio15 in period 2000-2000,
   # they actually contain future climate data for 2071-2100 under the SSP3-7.0 scenario.
   tar_target(mdl_paths,
     list.files(
-    "/lustre1/scratch/348/vsc34871/SDM_current/Models/",
+    "/lustre1/scratch/348/vsc34871/SDM_fut/Models/",
     full.names = TRUE
   )),
   # Make future species distributions
