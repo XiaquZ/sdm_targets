@@ -19,7 +19,7 @@ tar_option_set(
   resources = tar_resources(
     clustermq = tar_resources_clustermq(template = list(
       job_name = "future-sdms",
-      per_cpu_mem = "53000mb",
+      per_cpu_mem = "53500mb",
       n_tasks = 2,
       per_task_cpus = 14,
       walltime = "24:00:00"
