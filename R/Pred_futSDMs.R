@@ -1,7 +1,7 @@
 predict_futSDM <- function(input_folders, mdl_paths) {
 
   # Iterate through tiles (assumes tiles are numbered from 1 to 9)
-  for (i in 5:20) {
+  for (i in 1:8) {
     # Initialize an empty list to store predictors for this tile
     # Define predictor keywords
     predictors <- c(
