@@ -22,7 +22,7 @@ tar_option_set(
       per_cpu_mem = "53500mb",
       n_tasks = 2,
       per_task_cpus = 14,
-      walltime = "71:00:00"
+      walltime = "120:00:00"
     ))
   )
 )
@@ -50,7 +50,7 @@ tar_plan(
   # they actually contain future climate data for 2071-2100 under the SSP3-7.0 scenario.
   tar_target(mdl_paths,
     list.files(
-    "/lustre1/scratch/348/vsc34871/SDM_fut/Models/",
+    "/lustre1/scratch/348/vsc34871/SDM_fut/Models03/",
     full.names = TRUE
   )),
   # Make future species distributions
