@@ -50,7 +50,7 @@ tar_plan(
   # they actually contain future climate data for 2071-2100 under the SSP3-7.0 scenario.
   tar_target(mdl_paths,
     list.files(
-    "/lustre1/scratch/348/vsc34871/SDM_fut/Models/",
+    "/lustre1/scratch/348/vsc34871/SDM_fut/Models03/",
     full.names = TRUE
   )),
   # Make future species distributions
